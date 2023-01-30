@@ -1,7 +1,8 @@
-// TODO -- create the user provider!
 const { createContext, useState } = require('react');
-
 const { getUser } = createContext();
+
+// TODO -- create the user provider!
+const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
   const currentUser = getUser();

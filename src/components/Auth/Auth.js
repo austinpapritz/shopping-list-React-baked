@@ -21,7 +21,7 @@ export default function Auth() {
     // TODO
     // call authUser with email, pw, type
     try {
-      const newUser = authUser(email, password, type);
+      const newUser = await authUser(email, password, type);
       setUser(newUser);
     } catch (e) {
       console.error(e);

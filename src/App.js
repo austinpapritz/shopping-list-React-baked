@@ -5,14 +5,24 @@ import Header from './components/Header';
 import Items from './components/Items/Items';
 import backgroundImage from './supermarket.jpeg';
 
+import { useContext } from 'react';
+import { UserContext } from './context/UserContext.js';
+
 function App() {
+  const { user } = useContext(UserContext);
+
   return (
     <div className="App" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <Header />
       <Switch>
         <Route path="/auth/:type" component={Auth} />
         <Route path="/items" component={Items} />
-        <Route exact path="/"></Route>
+        <Route exact path="/">
+          <>
+            {user && <Redirect to="/items" />}
+            {!user && <Redirect to="/auth/sign-up" />}
+          </>
+        </Route>
       </Switch>
     </div>
   );

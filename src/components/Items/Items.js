@@ -13,7 +13,7 @@ export default function Items() {
   const { items, setItems } = useItems();
   // TODO -- redirect the user back to auth if there is not a current user
   if (!user) {
-    return <Redirect to="/auth"></Redirect>;
+    return <Redirect to="/auth/sign-in"></Redirect>;
   }
   const handleClick = async (item) => {
     try {

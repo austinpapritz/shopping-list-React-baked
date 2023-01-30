@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import 'bulma/css/bulma.min.css';
 import { BrowserRouter } from 'react-router-dom';
 import { UserProvider } from './context/UserContext.js';
+import { ItemsProvider } from './context/ItemsContext.js';
 
 // TODO -- make sure to wrap your app in your User provider!
 
@@ -14,7 +15,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <App />
+        <ItemsProvider>
+          <App />
+        </ItemsProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>

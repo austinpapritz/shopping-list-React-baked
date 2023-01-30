@@ -6,6 +6,7 @@ export default function ItemForm() {
   const [name, setName] = useState('');
   const [qty, setQty] = useState(0);
   const { setItems } = useContext(ItemsContext);
+
   const handleNewItem = async () => {
     try {
       const item = await createListItem(name, qty);
@@ -16,6 +17,7 @@ export default function ItemForm() {
       console.error(e.message);
     }
   };
+
   return (
     <div className="field is-grouped m-2">
       <input

@@ -1,14 +1,14 @@
 import { checkError, client } from './client';
 
 export async function getListItems() {
-  const response = await client.from('shopping_items').select();
+  const response = await client.from('todos').select();
   // this will only grab items that belong to this user thanks to RLS and user_id property
 
   return checkError(response);
 }
 
 export async function createListItem(name, qty) {
-  const response = await client.from('shopping_items').insert([{ name, qty }]); // because of RLS and our default values, we add user_id for free
+  const response = await client.from('todos').insert([{ name, qty }]); // because of RLS and our default values, we add user_id for free
 
   return checkError(response);
 }
@@ -19,7 +19,7 @@ export async function createListItem(name, qty) {
 export async function toggleListItem({ id, purchased }) {
   // sets a given list item's bought property to true
   const response = await client
-    .from('shopping_items')
+    .from('todos')
     .update({ purchased: !purchased })
     .match({ id })
     .single();
